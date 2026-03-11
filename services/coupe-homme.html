@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coupe homme | Barbier et salon de coiffure | Les Barbares</title>
+  <meta name="description" content="Service de coupe homme chez Les Barbares à La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme. Dégradé, coupe classique, coupe moderne et finition précise." />
+  <link rel="canonical" href="https://lesbarbares.ca/services/coupe-homme.html" />
+  <meta property="og:title" content="Coupe homme | Les Barbares" />
+  <meta property="og:description" content="Coupe homme nette et soignée dans nos 4 succursales." />
+  <meta property="og:image" content="https://lesbarbares.ca/photos/lesbarbaresdragon-375.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="site-nav">
+      <div class="container site-nav-inner">
+        <a class="brand" href="../index.html" aria-label="Les Barbares"><img src="../brand_assets/les-barbares-salon-de-coiffure.png" alt="Les Barbares" /></a>
+        <ul class="nav-links">
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../succursales.html">Nos succursales</a></li>
+          <li><a href="../contact.html">Nous joindre</a></li>
+        </ul>
+        <button class="button" type="button" onclick="openBooking()">Réserver</button>
+        <button class="mobile-toggle" type="button" onclick="toggleMenu()" aria-label="Ouvrir le menu">Menu</button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="../index.html" onclick="toggleMenu()">Accueil</a>
+      <a href="../services.html" onclick="toggleMenu()">Services</a>
+      <a href="../succursales.html" onclick="toggleMenu()">Succursales</a>
+      <a href="../contact.html" onclick="toggleMenu()">Nous joindre</a>
+      <button class="mobile-book" type="button" onclick="openBooking()">Réserver</button>
+    </div>
+
+    <main>
+      <section class="page-hero">
+        <div class="container service-hero">
+          <div class="service-copy">
+            <div class="breadcrumbs">
+              <a href="../index.html">Accueil</a>
+              <span>/</span>
+              <a href="../services.html">Services</a>
+              <span>/</span>
+              <span>Coupe homme</span>
+            </div>
+            <p class="eyebrow">Coupe homme</p>
+            <h1>Une coupe homme précise, portable et alignée sur votre style.</h1>
+            <p class="lead">Les concurrents les mieux positionnés à Montréal parlent souvent de fade, de taper, de précision aux ciseaux et de finition nette. Nous retenons ici la même logique éditoriale, mais avec le langage Les Barbares : une coupe pensée pour bien tomber aujourd’hui, mais aussi bien repousser demain.</p>
+            <div class="pill-row">
+              <span class="pill">Dégradé</span>
+              <span class="pill">Coupe classique</span>
+              <span class="pill">Texture</span>
+              <span class="pill">Finition nette</span>
+            </div>
+            <div class="page-actions">
+              <button class="button" type="button" onclick="openBooking()">Réserver</button>
+              <a class="ghost-button" href="../services.html">Retour aux services</a>
+            </div>
+          </div>
+          <div class="image-frame">
+            <img src="../photos/lesbarbaresdragon-375.jpg" alt="Coupe homme chez Les Barbares" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container service-layout">
+          <div class="detail-card">
+            <p class="eyebrow">Ce qui est travaillé</p>
+            <h2>La structure avant tout.</h2>
+            <ul class="bullet-list">
+              <li>Analyse rapide de la densité, de l’implantation et du mouvement naturel.</li>
+              <li>Choix de technique selon l’effet recherché : ciseaux, tondeuse, fade plus fondu ou contour plus graphique.</li>
+              <li>Finition propre au niveau de la nuque, des tempes et du dessus pour garder une repousse élégante.</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <p class="eyebrow">Pour qui</p>
+            <h2>Du classique bien exécuté au look plus actuel.</h2>
+            <ul class="bullet-list">
+              <li>Pour les professionnels qui veulent une coupe nette et facile à entretenir.</li>
+              <li>Pour les clients qui aiment les dégradés plus courts, les contours propres ou un dessus plus texturé.</li>
+              <li>Pour ceux qui veulent un barbier au Québec capable de conseiller le bon niveau d’entretien.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand"><img src="../brand_assets/les-barbares-salon-de-coiffure.png" alt="Les Barbares" /><p>Coupe homme à La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme.</p></div>
+          <div><p class="eyebrow">Navigation</p><ul class="footer-links"><li><a href="../services.html">Services</a></li><li><a href="../succursales.html">Nos succursales</a></li><li><a href="../contact.html">Nous joindre</a></li></ul></div>
+          <div><p class="eyebrow">Réserver</p><div class="footer-branches"><a href="#" onclick="openBooking(); return false;">Choisir une succursale</a></div></div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Les Barbares</span><span>info@lesbarbares.ca · 450-937-7909</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="booking-overlay" id="booking-overlay" onclick="closeBooking()"></div>
+  <aside class="booking-panel" id="booking-panel" aria-modal="true" role="dialog" aria-label="Réserver une visite">
+    <div class="booking-header"><h2 class="booking-title">Réserver une visite</h2><button class="booking-close" type="button" onclick="closeBooking()" aria-label="Fermer">✕</button></div>
+    <div class="booking-body"><p>Sélectionnez une succursale. Le clic ouvre directement le bon lien de réservation.</p><div class="booking-locations"><button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://linktr.ee/Barbares"><span class="name">La Prairie</span><span class="address">502 Rue Saint-Georges · La Prairie</span></button><button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://book.squareup.com/appointments/hnw8ubz1rvs21f/location/LJN0TJ5JBTWC9/services"><span class="name">Laval (Sainte-Rose)</span><span class="address">135 Boul. Curé-Labelle · Laval</span></button><button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://book.squareup.com/appointments/hnw8ubz1rvs21f/location/LEB6K5XP36884/services"><span class="name">Mont-Saint-Hilaire</span><span class="address">290-B Boul. Sir-Wilfrid-Laurier</span></button><button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://stjerome.lesbarbares.ca/index.php/Fr/Accueil/Accueil/"><span class="name">St-Jérôme</span><span class="address">676 Boul. Labelle · Saint-Jérôme</span></button></div></div>
+  </aside>
+
+  <script src="../site.js"></script>
+</body>
+</html>

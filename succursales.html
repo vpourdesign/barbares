@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nos succursales | La Prairie, Laval, Mont-Saint-Hilaire, St-Jérôme | Les Barbares</title>
+  <meta name="description" content="Explorez les 4 succursales Les Barbares avec une grille claire pour La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme. Réservez directement dans la bonne succursale." />
+  <link rel="canonical" href="https://lesbarbares.ca/succursales.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nos succursales | Les Barbares" />
+  <meta property="og:description" content="Une grille claire des 4 succursales Les Barbares avec réservation par emplacement." />
+  <meta property="og:url" content="https://lesbarbares.ca/succursales.html" />
+  <meta property="og:image" content="https://lesbarbares.ca/photos/facebook.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="site-nav">
+      <div class="container site-nav-inner">
+        <a class="brand" href="index.html" aria-label="Les Barbares"><img src="brand_assets/les-barbares-salon-de-coiffure.png" alt="Les Barbares" /></a>
+        <ul class="nav-links">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="succursales.html">Nos succursales</a></li>
+          <li><a href="contact.html">Nous joindre</a></li>
+        </ul>
+        <button class="button" type="button" onclick="openBooking()">Réserver</button>
+        <button class="mobile-toggle" type="button" onclick="toggleMenu()" aria-label="Ouvrir le menu">Menu</button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html" onclick="toggleMenu()">Accueil</a>
+      <a href="services.html" onclick="toggleMenu()">Services</a>
+      <a href="succursales.html" onclick="toggleMenu()">Succursales</a>
+      <a href="contact.html" onclick="toggleMenu()">Nous joindre</a>
+      <button class="mobile-book" type="button" onclick="openBooking()">Réserver</button>
+    </div>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="breadcrumbs">
+            <a href="index.html">Accueil</a>
+            <span>/</span>
+            <span>Nos succursales</span>
+          </div>
+          <p class="eyebrow">Quatre adresses</p>
+          <h1>Une grille claire des 4 succursales Les Barbares.</h1>
+          <p>Cette page concentre l’information locale utile pour la clientèle et pour le référencement : ville, adresse, ancrage géographique et accès direct à la réservation. C’est une structure que l’on retrouve souvent sur les sites locaux les plus efficaces du secteur beauté/coiffure.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container locations-grid">
+          <article class="location-card">
+            <h3>La Prairie</h3>
+            <p>502 Rue Saint-Georges, La Prairie, QC</p>
+            <p>Idéal pour la Rive-Sud et les clients qui recherchent un barbier et salon de coiffure accessible sans traverser Montréal.</p>
+            <div class="branch-links">
+              <a href="#" onclick="openBooking(); return false;">Réserver</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=502+Rue+Saint-Georges+La+Prairie+QC" target="_blank" rel="noopener">Voir sur la carte</a>
+            </div>
+          </article>
+          <article class="location-card">
+            <h3>Laval (Sainte-Rose)</h3>
+            <p>135 Boul. Curé-Labelle, Laval, QC</p>
+            <p>Une adresse forte pour Laval et la clientèle du nord de Montréal à la recherche d’une coupe nette ou d’un service plus complet.</p>
+            <div class="branch-links">
+              <a href="#" onclick="openBooking(); return false;">Réserver</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=135+Boul+Cur%C3%A9-Labelle+Laval+QC" target="_blank" rel="noopener">Voir sur la carte</a>
+            </div>
+          </article>
+          <article class="location-card">
+            <h3>Mont-Saint-Hilaire</h3>
+            <p>290-B Boul. Sir-Wilfrid-Laurier, Mont-Saint-Hilaire, QC</p>
+            <p>Un point de service qui rejoint efficacement la clientèle de la Vallée-du-Richelieu avec l’ADN Les Barbares.</p>
+            <div class="branch-links">
+              <a href="#" onclick="openBooking(); return false;">Réserver</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=290-B+Boul+Sir-Wilfrid-Laurier+Mont-Saint-Hilaire+QC" target="_blank" rel="noopener">Voir sur la carte</a>
+            </div>
+          </article>
+          <article class="location-card">
+            <h3>St-Jérôme</h3>
+            <p>676 Boul. Labelle, Saint-Jérôme, QC</p>
+            <p>Une succursale bien placée pour les Laurentides avec un lien de réservation distinct et une clientèle locale forte.</p>
+            <div class="branch-links">
+              <a href="#" onclick="openBooking(); return false;">Réserver</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=676+Boul+Labelle+Saint-J%C3%A9r%C3%B4me+QC" target="_blank" rel="noopener">Voir sur la carte</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split-panel">
+          <div class="detail-card">
+            <p class="eyebrow">Pourquoi cette page compte</p>
+            <h2>Un signal local plus fort pour Google et pour vos clients.</h2>
+            <ul class="bullet-list">
+              <li>Une page dédiée aux succursales permet de capter les recherches par ville et par intention locale.</li>
+              <li>Chaque ville est citée clairement dans le titre, le contenu et les liens internes.</li>
+              <li>Le parcours vers la réservation est plus direct qu’avec un simple bloc de pied de page.</li>
+            </ul>
+          </div>
+          <div class="image-frame">
+            <img src="photos/facebook.jpg" alt="Espace intérieur Les Barbares" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="brand_assets/les-barbares-salon-de-coiffure.png" alt="Les Barbares" />
+            <p>La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme.</p>
+          </div>
+          <div>
+            <p class="eyebrow">Navigation</p>
+            <ul class="footer-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Nous joindre</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="eyebrow">Contact</p>
+            <div class="footer-branches">
+              <span>info@lesbarbares.ca</span>
+              <span>450-937-7909</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Les Barbares</span>
+          <span>Réservation par succursale</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="booking-overlay" id="booking-overlay" onclick="closeBooking()"></div>
+  <aside class="booking-panel" id="booking-panel" aria-modal="true" role="dialog" aria-label="Réserver une visite">
+    <div class="booking-header">
+      <h2 class="booking-title">Réserver une visite</h2>
+      <button class="booking-close" type="button" onclick="closeBooking()" aria-label="Fermer">✕</button>
+    </div>
+    <div class="booking-body">
+      <p>Sélectionnez une succursale. Le clic ouvre directement le bon lien de réservation.</p>
+      <div class="booking-locations">
+        <button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://linktr.ee/Barbares"><span class="name">La Prairie</span><span class="address">502 Rue Saint-Georges · La Prairie</span></button>
+        <button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://book.squareup.com/appointments/hnw8ubz1rvs21f/location/LJN0TJ5JBTWC9/services"><span class="name">Laval (Sainte-Rose)</span><span class="address">135 Boul. Curé-Labelle · Laval</span></button>
+        <button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://book.squareup.com/appointments/hnw8ubz1rvs21f/location/LEB6K5XP36884/services"><span class="name">Mont-Saint-Hilaire</span><span class="address">290-B Boul. Sir-Wilfrid-Laurier</span></button>
+        <button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://stjerome.lesbarbares.ca/index.php/Fr/Accueil/Accueil/"><span class="name">St-Jérôme</span><span class="address">676 Boul. Labelle · Saint-Jérôme</span></button>
+      </div>
+    </div>
+  </aside>
+
+  <script src="site.js"></script>
+</body>
+</html>

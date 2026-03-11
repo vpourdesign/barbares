@@ -1,1658 +1,277 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr-CA">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Les Barbares — Salon de Coiffure & Barbershop au Québec</title>
-  <meta name="description" content="Les Barbares est un salon de coiffure et barbershop au Québec, spécialisé dans les coupes hommes, femmes et enfants. 4 succursales : La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme." />
+  <title>Les Barbares | Salon de coiffure, barbier et coloration au Grand Montréal</title>
+  <meta name="description" content="Les Barbares est un salon de coiffure et barbier du Grand Montréal avec 4 succursales à La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme. Coupe homme, barbe, rasage, coupe femme et balayage." />
+  <link rel="canonical" href="https://lesbarbares.ca/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Les Barbares | Salon de coiffure, barbier et coloration au Grand Montréal" />
+  <meta property="og:description" content="Barbershop et salon de coiffure avec 4 succursales au Québec. Réservez votre coupe, barbe, rasage, coupe femme ou balayage chez Les Barbares." />
+  <meta property="og:url" content="https://lesbarbares.ca/" />
+  <meta property="og:image" content="https://lesbarbares.ca/photos/lesbarbareslandingpage-1.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ─── RESET & BASE ─────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black: #000;
-      --white: #fff;
-      --orange: #ff622b;
-      --grey-dark: #0f0f0f;
-      --grey-mid: #111;
-      --grey-subtle: #1a1a1a;
-      --grey-border: #222;
-      --font-display: 'Playfair Display', serif;
-      --font-body: 'DM Sans', sans-serif;
-      --nav-height: 72px;
-      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      background-color: var(--black);
-      color: var(--white);
-      font-family: var(--font-body);
-      font-weight: 400;
-      line-height: 1.5;
-      overflow-x: hidden;
-      cursor: default;
-    }
-
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; border: none; background: none; font-family: inherit; }
-
-    /* ─── SCROLLBAR ─────────────────────────────────────────── */
-    ::-webkit-scrollbar { width: 4px; height: 4px; }
-    ::-webkit-scrollbar-track { background: var(--black); }
-    ::-webkit-scrollbar-thumb { background: var(--grey-border); border-radius: 2px; }
-
-    /* ─── NAVIGATION ────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2.5rem;
-      background: transparent;
-      transition: background 0.4s var(--ease), transform 0.4s var(--ease), border-bottom 0.4s;
-      border-bottom: 1px solid transparent;
-    }
-
-    nav.scrolled {
-      background: rgba(0, 0, 0, 0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--grey-border);
-    }
-
-    nav.hidden { transform: translateY(-100%); }
-
-    .nav-logo img {
-      width: 160px;
-      height: auto;
-      display: block;
-      /* Logo is white on transparent — works on dark bg */
-      filter: brightness(0) invert(1);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 0.7;
-      transition: opacity 0.2s;
-    }
-
-    .nav-links a:hover { opacity: 1; }
-
-    .nav-book-btn {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--black);
-      background: var(--orange);
-      padding: 0.6rem 1.4rem;
-      border-radius: 2px;
-      transition: background 0.25s, color 0.25s;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .nav-book-btn:hover { background: var(--white); }
-
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 1.5px;
-      background: var(--white);
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
-    /* ─── MOBILE NAV OVERLAY ─────────────────────────────────── */
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      background: var(--black);
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s var(--ease);
-    }
-
-    .mobile-menu.open { opacity: 1; pointer-events: all; }
-
-    .mobile-menu a {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-style: italic;
-      color: var(--white);
-      transition: color 0.2s;
-    }
-
-    .mobile-menu a:hover { color: var(--orange); }
-
-    .mobile-menu-book {
-      margin-top: 1rem;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--black);
-      background: var(--orange);
-      padding: 1rem 2.5rem;
-      border-radius: 2px;
-      cursor: pointer;
-      border: none;
-    }
-
-    /* ─── HERO ──────────────────────────────────────────────── */
-    #hero {
-      display: grid;
-      grid-template-columns: 55% 45%;
-      min-height: 100vh;
-      position: relative;
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 7rem 3rem 5rem 3rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 2rem;
-    }
-
-    .hero-headline {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 700;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-headline .line {
-      display: block;
-      font-size: clamp(3.5rem, 7.5vw, 8.5rem);
-      overflow: hidden;
-    }
-
-    .hero-headline .line span {
-      display: inline-block;
-      transform: translateY(110%);
-      animation: slideUp 0.9s var(--ease) forwards;
-    }
-
-    .hero-headline .line:nth-child(1) span { animation-delay: 0.1s; }
-    .hero-headline .line:nth-child(2) span { animation-delay: 0.2s; color: var(--orange); }
-    .hero-headline .line:nth-child(3) span { animation-delay: 0.3s; }
-
-    @keyframes slideUp {
-      to { transform: translateY(0); }
-    }
-
-    .hero-tagline {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 400;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 2.5rem;
-      letter-spacing: 0.02em;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--black);
-      background: var(--orange);
-      padding: 1rem 2rem;
-      border-radius: 2px;
-      width: fit-content;
-      transition: background 0.25s, color 0.25s, gap 0.25s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .hero-cta:hover { background: var(--white); gap: 1rem; }
-
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-right::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, var(--black) 0%, transparent 30%);
-      z-index: 1;
-    }
-
-    .hero-right img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      transform: scale(1.05);
-      animation: heroZoom 8s var(--ease) forwards;
-    }
-
-    @keyframes heroZoom {
-      to { transform: scale(1); }
-    }
-
-    .hero-scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      z-index: 3;
-    }
-
-    .hero-scroll-hint::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: rgba(255,255,255,0.25);
-    }
-
-    /* ─── MARQUEE ────────────────────────────────────────────── */
-    .marquee-strip {
-      background: var(--orange);
-      height: 56px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 0;
-      animation: marqueeScroll 18s linear infinite;
-      white-space: nowrap;
-    }
-
-    .marquee-item {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--black);
-      padding: 0 2.5rem;
-      flex-shrink: 0;
-    }
-
-    .marquee-dot {
-      color: rgba(0,0,0,0.4);
-    }
-
-    @keyframes marqueeScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ─── SECTION COMMONS ────────────────────────────────────── */
-    section { position: relative; }
-
-    .section-label {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 1.5rem;
-    }
-
-    .section-label.dark { color: rgba(0,0,0,0.4); }
-
-    /* ─── SERVICES ───────────────────────────────────────────── */
-    #services {
-      background: var(--black);
-      padding: 8rem 3rem;
-    }
-
-    .services-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 5rem;
-      gap: 2rem;
-    }
-
-    .services-heading {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 700;
-      font-size: clamp(4rem, 9vw, 11rem);
-      line-height: 0.85;
-      letter-spacing: -0.03em;
-    }
-
-    .services-heading em {
-      color: var(--orange);
-      font-style: normal;
-    }
-
-    .services-subtext {
-      max-width: 280px;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.6;
-      padding-bottom: 0.5rem;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-    }
-
-    .service-card {
-      padding: 2rem 1.5rem 2rem 0;
-      border-top: 1px solid var(--grey-border);
-      border-right: 1px solid var(--grey-border);
-      transition: border-top-color 0.3s;
-      position: relative;
-    }
-
-    .service-card:last-child { border-right: none; }
-
-    .service-card:hover { border-top-color: var(--orange); }
-
-    .service-card:hover .service-name { color: var(--orange); }
-
-    .service-num {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.25);
-      margin-bottom: 1.5rem;
-    }
-
-    .service-name {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1.35rem;
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 0.75rem;
-      transition: color 0.3s;
-    }
-
-    .service-desc {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-
-    .service-price {
-      font-family: var(--font-body);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .service-photo {
-      width: calc(100% + 1.5rem);
-      height: 200px;
-      object-fit: cover;
-      margin-top: 1.5rem;
-      margin-right: -1.5rem;
-      display: none;
-    }
-
-    /* ─── ATMOSPHERE ─────────────────────────────────────────── */
-    #atmosphere {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 80vh;
-    }
-
-    .atmos-photo {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .atmos-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 0.8s var(--ease);
-    }
-
-    .atmos-photo:hover img { transform: scale(1.03); }
-
-    .atmos-content {
-      background: var(--grey-mid);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6rem 4.5rem;
-    }
-
-    .atmos-heading {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 4.5vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      margin-bottom: 2.5rem;
-    }
-
-    .atmos-heading em {
-      font-style: italic;
-      display: block;
-    }
-
-    .atmos-body {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.8;
-      max-width: 380px;
-      margin-bottom: 3rem;
-    }
-
-    .atmos-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white);
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 0.25rem;
-      transition: color 0.25s, border-color 0.25s, gap 0.25s;
-    }
-
-    .atmos-link:hover {
-      color: var(--orange);
-      border-color: var(--orange);
-      gap: 0.9rem;
-    }
-
-    /* ─── GALLERY ────────────────────────────────────────────── */
-    #gallery {
-      background: var(--grey-dark);
-      padding: 8rem 0 8rem 3rem;
-      overflow: hidden;
-    }
-
-    .gallery-header {
-      padding-right: 3rem;
-      margin-bottom: 3.5rem;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-    }
-
-    .gallery-heading {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 700;
-      font-size: clamp(4rem, 10vw, 12rem);
-      line-height: 0.85;
-      letter-spacing: -0.03em;
-    }
-
-    .gallery-hint {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      padding-bottom: 0.75rem;
-    }
-
-    .gallery-scroll {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding-right: 3rem;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .gallery-scroll::-webkit-scrollbar { display: none; }
-
-    .gallery-item {
-      flex-shrink: 0;
-      width: 360px;
-      height: 480px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease);
-    }
-
-    .gallery-item:hover img { transform: scale(1.05); }
-
-    .gallery-item-label {
-      position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(6px);
-      padding: 0.4rem 0.75rem;
-    }
-
-    /* ─── BOOKING CTA ─────────────────────────────────────────── */
-    #booking-cta {
-      background: var(--orange);
-      padding: 10rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #booking-cta::before {
-      content: 'RÉSERVEZ';
-      position: absolute;
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 22vw;
-      font-weight: 700;
-      color: rgba(0,0,0,0.06);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      white-space: nowrap;
-      pointer-events: none;
-      letter-spacing: -0.04em;
-    }
-
-    .booking-cta-label {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,0.4);
-      margin-bottom: 1.5rem;
-    }
-
-    .booking-cta-heading {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(4rem, 10vw, 12rem);
-      line-height: 0.88;
-      letter-spacing: -0.03em;
-      color: var(--black);
-      margin-bottom: 2.5rem;
-    }
-
-    .booking-cta-heading em {
-      font-style: italic;
-      display: block;
-    }
-
-    .booking-cta-sub {
-      font-size: 1rem;
-      color: rgba(0,0,0,0.6);
-      margin-bottom: 3.5rem;
-    }
-
-    .booking-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--black);
-      padding: 1.25rem 3rem;
-      border-radius: 2px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.25s, color 0.25s, gap 0.25s;
-      position: relative;
-      z-index: 1;
-    }
-
-    .booking-cta-btn:hover {
-      background: var(--white);
-      color: var(--black);
-      gap: 1.2rem;
-    }
-
-    /* ─── FAQ ────────────────────────────────────────────────── */
-    #faq {
-      background: var(--black);
-      padding: 8rem 3rem;
-    }
-
-    .faq-inner {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    .faq-left { position: sticky; top: 8rem; }
-
-    .faq-heading {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-weight: 700;
-      font-size: clamp(5rem, 10vw, 12rem);
-      line-height: 0.85;
-      letter-spacing: -0.03em;
-    }
-
-    .faq-list { list-style: none; }
-
-    .faq-item {
-      border-top: 1px solid var(--grey-border);
-    }
-
-    .faq-item:last-child { border-bottom: 1px solid var(--grey-border); }
-
-    .faq-question {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      padding: 1.75rem 0;
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--white);
-      transition: color 0.25s;
-      background: none;
-      border: none;
-      width: 100%;
-      text-align: left;
-    }
-
-    .faq-question:hover { color: var(--orange); }
-
-    .faq-question.active { color: var(--orange); }
-
-    .faq-icon {
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      border: 1px solid var(--grey-border);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 300;
-      transition: background 0.25s, border-color 0.25s, transform 0.35s;
-    }
-
-    .faq-question.active .faq-icon {
-      background: var(--orange);
-      border-color: var(--orange);
-      transform: rotate(45deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.45s var(--ease), padding 0.35s;
-    }
-
-    .faq-answer.open { max-height: 300px; padding-bottom: 1.75rem; }
-
-    .faq-answer p {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.8;
-    }
-
-    /* ─── FOOTER ─────────────────────────────────────────────── */
-    footer {
-      background: var(--black);
-      border-top: 1px solid var(--grey-border);
-      padding: 5rem 3rem 3rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1.2fr;
-      gap: 4rem;
-      margin-bottom: 5rem;
-    }
-
-    .footer-brand img {
-      width: 140px;
-      margin-bottom: 1.25rem;
-      filter: brightness(0) invert(1);
-    }
-
-    .footer-tagline {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.4);
-      line-height: 1.7;
-      max-width: 220px;
-    }
-
-    .footer-col-heading {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .footer-links a {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.55);
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--orange); }
-
-    .footer-address {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.9;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-address strong {
-      display: block;
-      color: rgba(255,255,255,0.7);
-      font-weight: 600;
-      margin-top: 1rem;
-    }
-
-    .footer-address strong:first-child { margin-top: 0; }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .footer-social a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border: 1px solid var(--grey-border);
-      border-radius: 50%;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.9rem;
-      transition: background 0.25s, border-color 0.25s, color 0.25s;
-    }
-
-    .footer-social a:hover {
-      background: var(--orange);
-      border-color: var(--orange);
-      color: var(--black);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--grey-border);
-      padding-top: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .footer-bottom p {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.25);
-      letter-spacing: 0.05em;
-    }
-
-    /* ─── FLOATING BOOK WIDGET ───────────────────────────────── */
-    .float-book-btn {
-      position: fixed;
-      bottom: 1.75rem;
-      right: 1.75rem;
-      z-index: 998;
-      background: var(--orange);
-      color: var(--black);
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 1rem 1.5rem;
-      border-radius: 100px;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 8px 32px rgba(255, 98, 43, 0.4);
-      transition: transform 0.25s var(--ease), box-shadow 0.25s;
-    }
-
-    .float-book-btn:hover {
-      transform: scale(1.04) translateY(-2px);
-      box-shadow: 0 16px 40px rgba(255, 98, 43, 0.5);
-    }
-
-    .float-book-btn svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    /* ─── BOOKING PANEL ──────────────────────────────────────── */
-    .booking-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(4px);
-      z-index: 1100;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s var(--ease);
-    }
-
-    .booking-overlay.open { opacity: 1; pointer-events: all; }
-
-    .booking-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      max-width: 480px;
-      background: var(--grey-mid);
-      z-index: 1101;
-      display: flex;
-      flex-direction: column;
-      transform: translateX(100%);
-      transition: transform 0.5s var(--ease);
-      overflow-y: auto;
-    }
-
-    .booking-panel.open { transform: translateX(0); }
-
-    .booking-panel-header {
-      padding: 2rem 2rem 1.5rem;
-      border-bottom: 1px solid var(--grey-border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-    }
-
-    .booking-panel-title {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .booking-close {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--grey-border);
-      border-radius: 50%;
-      color: rgba(255,255,255,0.5);
-      font-size: 1rem;
-      cursor: pointer;
-      background: none;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .booking-close:hover { background: var(--orange); color: var(--black); border-color: var(--orange); }
-
-    .booking-panel-body {
-      padding: 2rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .booking-step-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 1rem;
-    }
-
-    .booking-locations {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .booking-location-card {
-      border: 1px solid var(--grey-border);
-      padding: 1.25rem 1.5rem;
-      cursor: pointer;
-      transition: border-color 0.25s, background 0.25s;
-      border-radius: 2px;
-    }
-
-    .booking-location-card:hover,
-    .booking-location-card.selected {
-      border-color: var(--orange);
-      background: rgba(255, 98, 43, 0.07);
-    }
-
-    .booking-location-name {
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .booking-location-addr {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.45);
-    }
-
-    .booking-services-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .booking-service-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid var(--grey-border);
-      padding: 1rem 1.25rem;
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-      border-radius: 2px;
-    }
-
-    .booking-service-item:hover,
-    .booking-service-item.selected {
-      border-color: var(--orange);
-      background: rgba(255, 98, 43, 0.07);
-    }
-
-    .booking-service-name { font-size: 0.9rem; font-weight: 500; }
-    .booking-service-price { font-size: 0.85rem; color: var(--orange); font-weight: 600; }
-
-    .booking-divider {
-      height: 1px;
-      background: var(--grey-border);
-    }
-
-    .booking-confirm-btn {
-      width: 100%;
-      background: var(--orange);
-      color: var(--black);
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 1.1rem;
-      border: none;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: background 0.25s;
-      margin-top: auto;
-    }
-
-    .booking-confirm-btn:hover { background: var(--white); }
-
-    .booking-note {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.3);
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────────── */
-    @media (max-width: 1100px) {
-      .services-grid { grid-template-columns: repeat(3, 1fr); }
-      .service-card:nth-child(3) { border-right: none; }
-      .service-card:nth-child(4) { border-right: 1px solid var(--grey-border); }
-    }
-
-    @media (max-width: 900px) {
-      #hero {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr auto;
-      }
-
-      .hero-left {
-        padding: 9rem 2rem 4rem;
-        order: 2;
-      }
-
-      .hero-right {
-        order: 1;
-        height: 55vh;
-      }
-
-      .hero-right::after {
-        background: linear-gradient(to top, var(--black) 0%, transparent 50%);
-      }
-
-      .hero-scroll-hint { left: 2rem; }
-
-      #atmosphere { grid-template-columns: 1fr; }
-      .atmos-photo { height: 60vw; }
-      .atmos-content { padding: 4rem 2rem; }
-
-      .faq-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .faq-left { position: static; }
-      .faq-heading { font-size: clamp(4rem, 14vw, 8rem); }
-
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
-      .footer-brand { grid-column: 1 / -1; }
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 1.5rem; }
-
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-
-      #hero { min-height: 100svh; }
-      .hero-left { padding: 8rem 1.5rem 4rem; }
-
-      .hero-headline .line { font-size: clamp(2.8rem, 12vw, 6rem); }
-
-      #services { padding: 5rem 1.5rem; }
-      .services-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
-      .service-card:nth-child(odd) { border-right: 1px solid var(--grey-border); }
-      .service-card:nth-child(even) { border-right: none; }
-      .service-card:nth-child(3) { border-right: 1px solid var(--grey-border); }
-
-      #gallery { padding: 5rem 0 5rem 1.5rem; }
-      .gallery-item { width: 280px; height: 380px; }
-
-      #booking-cta { padding: 7rem 1.5rem; }
-      #faq { padding: 5rem 1.5rem; }
-
-      footer { padding: 4rem 1.5rem 2rem; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .footer-brand { grid-column: unset; }
-
-      .booking-panel { max-width: 100%; }
-    }
-
-    @media (max-width: 480px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card { border-right: none !important; }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- ═══════════════════ NAV ═══════════════════ -->
-  <nav id="main-nav">
-    <a href="#" class="nav-logo" aria-label="Les Barbares — Accueil">
-      <img src="brand_assets/les-barbares-salon-de-coiffure.png" alt="Les Barbares" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#gallery">Galerie</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#footer-contact">Contact</a></li>
-    </ul>
-    <button class="nav-book-btn" onclick="openBooking()" aria-label="Réserver un rendez-vous">
-      Réserver →
-    </button>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#services" onclick="toggleMenu()">Services</a>
-    <a href="#gallery" onclick="toggleMenu()">Galerie</a>
-    <a href="#faq" onclick="toggleMenu()">FAQ</a>
-    <a href="#footer-contact" onclick="toggleMenu()">Contact</a>
-    <button class="mobile-menu-book" onclick="toggleMenu(); openBooking();">Réserver maintenant →</button>
-  </div>
-
-  <!-- ═══════════════════ HERO ═══════════════════ -->
-  <section id="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">La Prairie · Laval · Mont-Saint-Hilaire · St-Jérôme</p>
-      <h1 class="hero-headline" aria-label="Là où le style rencontre l'artisanat.">
-        <span class="line"><span>Là où le style</span></span>
-        <span class="line"><span>rencontre</span></span>
-        <span class="line"><span>l'artisanat.</span></span>
-      </h1>
-      <p class="hero-tagline">Salon de coiffure pour hommes &amp; femmes — 4 succursales au Québec</p>
-      <button class="hero-cta" onclick="openBooking()">
-        Prendre rendez-vous <span>→</span>
-      </button>
-    </div>
-    <div class="hero-right">
-      <img
-        src="photos/lesbarbareslandingpage-1.jpg"
-        alt="Les Barbares — barbershop à Montréal"
-        loading="eager"
-      />
-    </div>
-    <p class="hero-scroll-hint">Découvrir</p>
-  </section>
-
-  <!-- ═══════════════════ MARQUEE ═══════════════════ -->
-  <div class="marquee-strip" aria-hidden="true">
-    <div class="marquee-track">
-      <!-- duplicated for seamless loop -->
-      <span class="marquee-item">COUPE <span class="marquee-dot">·</span> BARBE <span class="marquee-dot">·</span> RASAGE <span class="marquee-dot">·</span> BALAYAGE <span class="marquee-dot">·</span> COULEUR <span class="marquee-dot">·</span> STYLE <span class="marquee-dot">·</span> COUPE <span class="marquee-dot">·</span> BARBE <span class="marquee-dot">·</span> RASAGE <span class="marquee-dot">·</span> BALAYAGE <span class="marquee-dot">·</span> COULEUR <span class="marquee-dot">·</span> STYLE <span class="marquee-dot">·</span></span>
-      <span class="marquee-item">COUPE <span class="marquee-dot">·</span> BARBE <span class="marquee-dot">·</span> RASAGE <span class="marquee-dot">·</span> BALAYAGE <span class="marquee-dot">·</span> COULEUR <span class="marquee-dot">·</span> STYLE <span class="marquee-dot">·</span> COUPE <span class="marquee-dot">·</span> BARBE <span class="marquee-dot">·</span> RASAGE <span class="marquee-dot">·</span> BALAYAGE <span class="marquee-dot">·</span> COULEUR <span class="marquee-dot">·</span> STYLE <span class="marquee-dot">·</span></span>
-    </div>
-  </div>
-
-  <!-- ═══════════════════ SERVICES ═══════════════════ -->
-  <section id="services">
-    <div class="services-header">
-      <h2 class="services-heading">Services<em>*</em></h2>
-      <p class="services-subtext">Le savoir-faire d'un barbier, la précision d'un styliste — pour chaque type de cheveu et chaque style de vie.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <p class="service-num">01</p>
-        <h3 class="service-name">Coupe<br/>Homme</h3>
-        <p class="service-desc">Coupe classique ou moderne, lavage inclus, finition à la tondeuse.</p>
-        <p class="service-price">$35+</p>
-      </div>
-      <div class="service-card">
-        <p class="service-num">02</p>
-        <h3 class="service-name">Coupe<br/>+ Barbe</h3>
-        <p class="service-desc">La combinaison parfaite pour un look complet et soigné.</p>
-        <p class="service-price">$55+</p>
-      </div>
-      <div class="service-card">
-        <p class="service-num">03</p>
-        <h3 class="service-name">Rasage<br/>Traditionnel</h3>
-        <p class="service-desc">Rasage à la lame droite avec serviette chaude et après-rasage.</p>
-        <p class="service-price">$40</p>
-      </div>
-      <div class="service-card">
-        <p class="service-num">04</p>
-        <h3 class="service-name">Coupe<br/>Femme</h3>
-        <p class="service-desc">Coupe, brushing et mise en forme adaptés à votre style.</p>
-        <p class="service-price">$65+</p>
-      </div>
-      <div class="service-card">
-        <p class="service-num">05</p>
-        <h3 class="service-name">Balayage<br/>&amp; Couleur</h3>
-        <p class="service-desc">Technique moderne pour un résultat naturel et lumineux.</p>
-        <p class="service-price">$120+</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ ATMOSPHERE ═══════════════════ -->
-  <section id="atmosphere">
-    <div class="atmos-photo">
-      <img
-        src="photos/Barbaresmur-124.jpg"
-        alt="L'intérieur de Les Barbares — ambiance loft montréalais"
-        loading="lazy"
-      />
-    </div>
-    <div class="atmos-content">
-      <p class="section-label">Notre ADN</p>
-      <h2 class="atmos-heading">
-        Plus qu'un salon,
-        <em>une expérience.</em>
-      </h2>
-      <p class="atmos-body">
-        Les Barbares, c'est un espace unique mêlant le savoir-faire traditionnel du barbershop et l'ambiance chaleureuse d'un loft chaleureux. 4 succursales au Québec, une seule philosophie : ici, on prend soin de toi avec style, fierté et précision.
-      </p>
-      <a href="#gallery" class="atmos-link">Voir la galerie →</a>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ GALLERY ═══════════════════ -->
-  <section id="gallery">
-    <div class="gallery-header">
-      <h2 class="gallery-heading">Galerie</h2>
-      <p class="gallery-hint">← Faites défiler →</p>
-    </div>
-    <div class="gallery-scroll">
-      <div class="gallery-item">
-        <img src="photos/lesbarbareslandingpage-1.jpg" alt="Coupe de barbe — Les Barbares" loading="lazy" />
-        <span class="gallery-item-label">Barbe & Style</span>
-      </div>
-      <div class="gallery-item">
-        <img src="photos/women.jpg" alt="Coupe femme — Les Barbares" loading="lazy" />
-        <span class="gallery-item-label">Coupe Femme</span>
-      </div>
-      <div class="gallery-item">
-        <img src="photos/lesbarbaresdragon-375.jpg" alt="Rasage traditionnel — Les Barbares" loading="lazy" />
-        <span class="gallery-item-label">Rasage Traditionnel</span>
-      </div>
-      <div class="gallery-item">
-        <img src="photos/facebook.jpg" alt="L'ambiance Les Barbares" loading="lazy" />
-        <span class="gallery-item-label">Notre Espace</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ BOOKING CTA ═══════════════════ -->
-  <section id="booking-cta">
-    <p class="booking-cta-label">C'est le moment</p>
-    <h2 class="booking-cta-heading">
-      Prendre
-      <em>rendez-vous.</em>
-    </h2>
-    <p class="booking-cta-sub">Réservation en ligne — rapide et simple.</p>
-    <button class="booking-cta-btn" onclick="openBooking()">
-      Réserver maintenant →
-    </button>
-  </section>
-
-  <!-- ═══════════════════ FAQ ═══════════════════ -->
-  <section id="faq">
-    <div class="faq-inner">
-      <div class="faq-left">
-        <p class="section-label">Questions fréquentes</p>
-        <h2 class="faq-heading">FAQ</h2>
-      </div>
-      <ul class="faq-list">
-        <li class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-            Est-ce que je dois réserver à l'avance ?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" role="region">
-            <p>Oui, nous recommandons fortement de réserver en ligne pour garantir votre place. Les disponibilités sans rendez-vous sont limitées, surtout les fins de semaine. La réservation prend moins de 2 minutes.</p>
-          </div>
-        </li>
-        <li class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-            Quels produits utilisez-vous ?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" role="region">
-            <p>Nous utilisons principalement des produits Reuzel, L'Oréal Professionnel et American Crew, reconnus pour leur qualité et leur longévité. Nos produits sont disponibles à l'achat en salon.</p>
-          </div>
-        </li>
-        <li class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-            Combien de temps dure une visite ?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" role="region">
-            <p>Une coupe simple dure environ 45 minutes. Comptez 1h15 pour une coupe + barbe, et jusqu'à 3 heures pour un balayage ou une couleur complète.</p>
-          </div>
-        </li>
-        <li class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-            Offrez-vous des services pour femmes ?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" role="region">
-            <p>Oui ! Nous offrons coupes, colorations, balayages et soins capillaires pour toute la famille. Nos stylistes sont formés pour tous types de cheveux et de styles.</p>
-          </div>
-        </li>
-        <li class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-            Où êtes-vous situés ?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" role="region">
-            <p>Nous avons quatre succursales au Québec : <strong style="color:rgba(255,255,255,0.8)">La Prairie</strong> (502 Rue Saint-Georges), <strong style="color:rgba(255,255,255,0.8)">Laval–Sainte-Rose</strong> (135 Boul. Curé-Labelle), <strong style="color:rgba(255,255,255,0.8)">Mont-Saint-Hilaire</strong> (290-B Boul. Sir-Wilfrid-Laurier) et <strong style="color:rgba(255,255,255,0.8)">St-Jérôme</strong> (676 Boul. Labelle).</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ FOOTER ═══════════════════ -->
-  <footer id="footer-contact">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="brand_assets/les-barbares-salon-de-coiffure.png" alt="Les Barbares" />
-        <p class="footer-tagline">Salon de coiffure pour hommes et femmes. 4 succursales au Québec — La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme.</p>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/les_barbares/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-          </a>
-          <a href="https://www.facebook.com/etes.vous.barbares/" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div>
-        <p class="footer-col-heading">Navigation</p>
-        <ul class="footer-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#gallery">Galerie</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#" onclick="openBooking(); return false;">Réserver</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer-col-heading">Nos succursales</p>
-        <div class="footer-address">
-          <strong>La Prairie</strong>
-          502 Rue Saint-Georges, La Prairie, QC<br/>
-          <span style="color:rgba(255,255,255,0.3);font-size:0.8rem;">Mar–Ven 10h–21h · Sam 10h–18h</span>
-          <strong>Laval (Sainte-Rose)</strong>
-          135 Boul. Curé-Labelle, Laval, QC<br/>
-          <span style="color:rgba(255,255,255,0.3);font-size:0.8rem;">Lun–Sam 10h–21h</span>
-          <strong>Mont-Saint-Hilaire</strong>
-          290-B Boul. Sir-Wilfrid-Laurier, QC<br/>
-          <span style="color:rgba(255,255,255,0.3);font-size:0.8rem;">Mar–Ven 10h–21h · Sam 10h–18h</span>
-          <strong>St-Jérôme</strong>
-          676 Boul. Labelle, Saint-Jérôme, QC<br/>
-          <span style="color:rgba(255,255,255,0.3);font-size:0.8rem;">Mar–Ven 10h–21h · Sam 10h–17h</span>
-        </div>
-        <p style="margin-top:1.25rem;font-size:0.8rem;color:rgba(255,255,255,0.4);">
-          <a href="mailto:info@lesbarbares.ca" style="color:rgba(255,255,255,0.5);transition:color 0.2s;" onmouseover="this.style.color='#ff622b'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">info@lesbarbares.ca</a><br/>
-          <a href="tel:4509377909" style="color:rgba(255,255,255,0.5);transition:color 0.2s;" onmouseover="this.style.color='#ff622b'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">450-937-7909</a>
-        </p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2024 Les Barbares. Tous droits réservés.</p>
-      <p>Fait au Québec avec fierté.</p>
-    </div>
-  </footer>
-
-  <!-- ═══════════════════ FLOATING BOOK BTN ═══════════════════ -->
-  <button class="float-book-btn" onclick="openBooking()" aria-label="Réserver un rendez-vous">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-    </svg>
-    Réserver
-  </button>
-
-  <!-- ═══════════════════ BOOKING PANEL ═══════════════════ -->
-  <div class="booking-overlay" id="booking-overlay" onclick="closeBooking()"></div>
-
-  <div class="booking-panel" id="booking-panel" role="dialog" aria-modal="true" aria-label="Réservation">
-    <div class="booking-panel-header">
-      <h2 class="booking-panel-title">Réserver une visite</h2>
-      <button class="booking-close" onclick="closeBooking()" aria-label="Fermer">✕</button>
-    </div>
-    <div class="booking-panel-body">
-
-      <!-- Step 1: Location -->
-      <div>
-        <p class="booking-step-label">Étape 1 — Choisissez votre salon</p>
-        <div class="booking-locations">
-          <div class="booking-location-card selected" onclick="selectLocation(this)" data-url="https://linktr.ee/Barbares">
-            <p class="booking-location-name">La Prairie</p>
-            <p class="booking-location-addr">502 Rue Saint-Georges · La Prairie</p>
-          </div>
-          <div class="booking-location-card" onclick="selectLocation(this)" data-url="https://book.squareup.com/appointments/hnw8ubz1rvs21f/location/LJN0TJ5JBTWC9/services">
-            <p class="booking-location-name">Laval (Sainte-Rose)</p>
-            <p class="booking-location-addr">135 Boul. Curé-Labelle · Laval</p>
-          </div>
-          <div class="booking-location-card" onclick="selectLocation(this)" data-url="https://book.squareup.com/appointments/hnw8ubz1rvs21f/location/LEB6K5XP36884/services">
-            <p class="booking-location-name">Mont-Saint-Hilaire</p>
-            <p class="booking-location-addr">290-B Boul. Sir-Wilfrid-Laurier</p>
-          </div>
-          <div class="booking-location-card" onclick="selectLocation(this)" data-url="https://stjerome.lesbarbares.ca/index.php/Fr/Accueil/Accueil/">
-            <p class="booking-location-name">St-Jérôme</p>
-            <p class="booking-location-addr">676 Boul. Labelle · Saint-Jérôme</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="booking-divider"></div>
-
-      <!-- Step 2: Service -->
-      <div>
-        <p class="booking-step-label">Étape 2 — Choisissez un service</p>
-        <div class="booking-services-grid">
-          <div class="booking-service-item" onclick="selectService(this)">
-            <span class="booking-service-name">Coupe Homme</span>
-            <span class="booking-service-price">$35+</span>
-          </div>
-          <div class="booking-service-item" onclick="selectService(this)">
-            <span class="booking-service-name">Coupe + Barbe</span>
-            <span class="booking-service-price">$55+</span>
-          </div>
-          <div class="booking-service-item" onclick="selectService(this)">
-            <span class="booking-service-name">Rasage Traditionnel</span>
-            <span class="booking-service-price">$40</span>
-          </div>
-          <div class="booking-service-item" onclick="selectService(this)">
-            <span class="booking-service-name">Coupe Femme</span>
-            <span class="booking-service-price">$65+</span>
-          </div>
-          <div class="booking-service-item" onclick="selectService(this)">
-            <span class="booking-service-name">Balayage & Couleur</span>
-            <span class="booking-service-price">$120+</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="booking-divider"></div>
-
-      <!-- Confirm -->
-      <button class="booking-confirm-btn" onclick="confirmBooking()">
-        Confirmer et choisir une date →
-      </button>
-      <p class="booking-note">Vous serez redirigé vers notre calendrier de réservation en ligne. Annulation gratuite jusqu'à 24h avant.</p>
-
-    </div>
-  </div>
-
-  <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
-  <script>
-    // ── NAV SCROLL BEHAVIOR ──────────────────────────────────
-    const nav = document.getElementById('main-nav');
-    let lastScroll = 0;
-    let ticking = false;
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const current = window.scrollY;
-          if (current > 80) {
-            nav.classList.add('scrolled');
-          } else {
-            nav.classList.remove('scrolled');
-          }
-          if (current > lastScroll && current > 200) {
-            nav.classList.add('hidden');
-          } else {
-            nav.classList.remove('hidden');
-          }
-          lastScroll = current;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-
-    // ── MOBILE MENU ──────────────────────────────────────────
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    let menuOpen = false;
-
-    function toggleMenu() {
-      menuOpen = !menuOpen;
-      mobileMenu.classList.toggle('open', menuOpen);
-      document.body.style.overflow = menuOpen ? 'hidden' : '';
-      // Animate hamburger bars
-      const bars = hamburger.querySelectorAll('span');
-      if (menuOpen) {
-        bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        bars[1].style.opacity = '0';
-        bars[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-      } else {
-        bars[0].style.transform = '';
-        bars[1].style.opacity = '';
-        bars[2].style.transform = '';
-      }
-    }
-
-    // ── FAQ ACCORDION ────────────────────────────────────────
-    function toggleFaq(btn) {
-      const answer = btn.nextElementSibling;
-      const isOpen = answer.classList.contains('open');
-
-      // Close all
-      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-      document.querySelectorAll('.faq-question').forEach(q => {
-        q.classList.remove('active');
-        q.setAttribute('aria-expanded', 'false');
-      });
-
-      if (!isOpen) {
-        answer.classList.add('open');
-        btn.classList.add('active');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    }
-
-    // ── BOOKING PANEL ────────────────────────────────────────
-    const overlay = document.getElementById('booking-overlay');
-    const panel   = document.getElementById('booking-panel');
-
-    function openBooking() {
-      overlay.classList.add('open');
-      panel.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      panel.focus();
-    }
-
-    function closeBooking() {
-      overlay.classList.remove('open');
-      panel.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeBooking();
-    });
-
-    function selectLocation(card) {
-      document.querySelectorAll('.booking-location-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-    }
-
-    function selectService(item) {
-      document.querySelectorAll('.booking-service-item').forEach(i => i.classList.remove('selected'));
-      item.classList.add('selected');
-    }
-
-    function confirmBooking() {
-      const locationCard = document.querySelector('.booking-location-card.selected');
-      const bookingUrl = locationCard ? locationCard.getAttribute('data-url') : 'https://lesbarbares.ca';
-      window.open(bookingUrl, '_blank', 'noopener,noreferrer');
-      closeBooking();
-    }
-
-    // ── GALLERY DRAG SCROLL ──────────────────────────────────
-    const galleryScroll = document.querySelector('.gallery-scroll');
-    let isDragging = false;
-    let startX, scrollLeft;
-
-    galleryScroll.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.pageX - galleryScroll.offsetLeft;
-      scrollLeft = galleryScroll.scrollLeft;
-      galleryScroll.style.cursor = 'grabbing';
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      galleryScroll.style.cursor = '';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX - galleryScroll.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      galleryScroll.scrollLeft = scrollLeft - walk;
-    });
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Les Barbares",
+    "url": "https://lesbarbares.ca/",
+    "image": "https://lesbarbares.ca/photos/lesbarbareslandingpage-1.jpg",
+    "telephone": "+1-450-937-7909",
+    "email": "info@lesbarbares.ca",
+    "areaServed": ["La Prairie", "Laval", "Mont-Saint-Hilaire", "Saint-Jérôme", "Grand Montréal"],
+    "sameAs": [
+      "https://www.instagram.com/les_barbares/",
+      "https://www.facebook.com/etes.vous.barbares/"
+    ]
+  }
   </script>
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="site-nav">
+      <div class="container site-nav-inner">
+        <a class="brand" href="index.html" aria-label="Les Barbares">
+          <img src="brand_assets/les-barbares-salon-de-coiffure.png" alt="Les Barbares" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="services.html">Services</a></li>
+          <li><a href="succursales.html">Nos succursales</a></li>
+          <li><a href="contact.html">Nous joindre</a></li>
+        </ul>
+        <button class="button" type="button" onclick="openBooking()">Réserver</button>
+        <button class="mobile-toggle" type="button" onclick="toggleMenu()" aria-label="Ouvrir le menu">Menu</button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html" onclick="toggleMenu()">Accueil</a>
+      <a href="services.html" onclick="toggleMenu()">Services</a>
+      <a href="succursales.html" onclick="toggleMenu()">Succursales</a>
+      <a href="contact.html" onclick="toggleMenu()">Nous joindre</a>
+      <button class="mobile-book" type="button" onclick="openBooking()">Réserver</button>
+    </div>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Barbershop & salon de coiffure au Grand Montréal</p>
+            <h1>Le style net. Le geste précis. L’expérience Les Barbares.</h1>
+            <p>Les Barbares réunit l’univers du barbier et du salon de coiffure dans une signature plus éditoriale, plus soignée, plus actuelle. Nos équipes accueillent la clientèle de La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme pour des coupes homme, des services de barbe, des rasages traditionnels, des coupes femme et des balayages pensés pour la vraie vie.</p>
+            <div class="hero-actions">
+              <a class="button" href="services.html">Découvrir les services</a>
+              <button class="ghost-button" type="button" onclick="openBooking()">Choisir une succursale</button>
+            </div>
+          </div>
+          <div class="hero-card">
+            <img src="photos/lesbarbareslandingpage-1.jpg" alt="Salon Les Barbares au Québec" />
+            <div class="hero-meta">
+              <div class="meta-card">
+                <strong>4 succursales</strong>
+                <p>La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme.</p>
+              </div>
+              <div class="meta-card">
+                <strong>Services mixtes</strong>
+                <p>Barbe, coupe homme, coupe femme et coloration.</p>
+              </div>
+              <div class="meta-card">
+                <strong>Réservation simple</strong>
+                <p>Un accès direct au bon lien par succursale.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Services populaires</p>
+            <h2>Des services qui couvrent l’essentiel, sans compromis sur la finition.</h2>
+            <p>Les sites de salons et barbershops les plus visibles du Grand Montréal mettent presque toujours de l’avant des pages dédiées par service, une intention locale forte et un discours clair sur le résultat recherché. Nous reprenons cette logique ici, avec une architecture plus solide pour le référencement et une lecture plus nette pour vos visiteurs.</p>
+          </div>
+          <div class="card-grid">
+            <article class="service-card">
+              <span class="index">01</span>
+              <h3>Coupe homme</h3>
+              <p>Coupe classique, dégradé propre, finition précise et consultation rapide pour un résultat durable.</p>
+              <a class="text-link" href="services/coupe-homme.html">Voir la page service</a>
+            </article>
+            <article class="service-card">
+              <span class="index">02</span>
+              <h3>Coupe + barbe</h3>
+              <p>Un rendez-vous complet pour harmoniser la coupe, la ligne de barbe et l’allure générale.</p>
+              <a class="text-link" href="services/coupe-barbe.html">Voir la page service</a>
+            </article>
+            <article class="service-card">
+              <span class="index">03</span>
+              <h3>Rasage traditionnel</h3>
+              <p>Une expérience plus rituelle avec serviette chaude, précision et confort de peau.</p>
+              <a class="text-link" href="services/rasage-traditionnel.html">Voir la page service</a>
+            </article>
+            <article class="service-card">
+              <span class="index">04</span>
+              <h3>Coupe femme</h3>
+              <p>Coupe sur mesure, mouvement, structure et finition adaptée à votre texture de cheveux.</p>
+              <a class="text-link" href="services/coupe-femme.html">Voir la page service</a>
+            </article>
+            <article class="service-card">
+              <span class="index">05</span>
+              <h3>Balayage & couleur</h3>
+              <p>Éclaircissement nuancé, couleur bien placée et diagnostic pensé pour l’entretien réel.</p>
+              <a class="text-link" href="services/balayage-couleur.html">Voir la page service</a>
+            </article>
+            <article class="service-card">
+              <span class="index">SEO</span>
+              <h3>Présence locale</h3>
+              <p>Chaque page cible un service, une intention et le territoire du Grand Montréal avec un balisage propre.</p>
+              <a class="text-link" href="succursales.html">Voir les succursales</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split-panel">
+          <div class="image-frame">
+            <img src="photos/women_grande.jpg" alt="Coupe et coloration chez Les Barbares" />
+          </div>
+          <div class="split-copy">
+            <p class="eyebrow">Notre positionnement</p>
+            <h2>Barbier d’exécution. Salon de finition. Même standard.</h2>
+            <p>Les concurrents locaux les mieux positionnés articulent souvent leur discours autour de la précision, de l’expérience en salon et de la spécialisation par service. C’est aussi le terrain naturel de Les Barbares. Le site reformulé met donc l’accent sur la qualité d’exécution, la polyvalence homme-femme et la proximité de nos quatre adresses au Québec.</p>
+            <div class="pill-row">
+              <span class="pill">Coupe homme</span>
+              <span class="pill">Barbe</span>
+              <span class="pill">Rasage</span>
+              <span class="pill">Coupe femme</span>
+              <span class="pill">Balayage</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Nos succursales</p>
+            <h2>Quatre points de service pour couvrir le Grand Montréal et ses environs.</h2>
+            <p>Chaque succursale dispose maintenant de son accès de réservation clair. La page dédiée aux succursales rassemble aussi les informations utiles pour la clientèle locale.</p>
+          </div>
+          <div class="locations-grid">
+            <article class="location-card">
+              <h3>La Prairie</h3>
+              <p>502 Rue Saint-Georges, La Prairie</p>
+              <p>Accès rapide pour la Rive-Sud avec une clientèle fidèle en coupe homme et services mixtes.</p>
+              <a class="booking-link" href="succursales.html">Voir la succursale</a>
+            </article>
+            <article class="location-card">
+              <h3>Laval (Sainte-Rose)</h3>
+              <p>135 Boul. Curé-Labelle, Laval</p>
+              <p>Un emplacement stratégique pour Laval et le nord de l’île avec une offre complète.</p>
+              <a class="booking-link" href="succursales.html">Voir la succursale</a>
+            </article>
+            <article class="location-card">
+              <h3>Mont-Saint-Hilaire</h3>
+              <p>290-B Boul. Sir-Wilfrid-Laurier</p>
+              <p>Une adresse pratique pour la Vallée-du-Richelieu et la clientèle recherchant un service soigné.</p>
+              <a class="booking-link" href="succursales.html">Voir la succursale</a>
+            </article>
+            <article class="location-card">
+              <h3>St-Jérôme</h3>
+              <p>676 Boul. Labelle, Saint-Jérôme</p>
+              <p>Une présence forte dans les Laurentides avec un lien de réservation distinct.</p>
+              <a class="booking-link" href="succursales.html">Voir la succursale</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cta-card">
+            <p class="eyebrow">Réservation</p>
+            <h2>Choisissez la succursale, puis réservez directement au bon endroit.</h2>
+            <p>Le panneau de réservation a été simplifié pour éviter les étapes inutiles. Le clic sur une succursale ouvre maintenant immédiatement le bon lien de réservation.</p>
+            <div class="page-actions">
+              <button class="button" type="button" onclick="openBooking()">Réserver maintenant</button>
+              <a class="ghost-button" href="contact.html">Nous joindre</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="brand_assets/les-barbares-salon-de-coiffure.png" alt="Les Barbares" />
+            <p>Salon de coiffure, barbier et coloration au service de la clientèle de La Prairie, Laval, Mont-Saint-Hilaire et St-Jérôme.</p>
+          </div>
+          <div>
+            <p class="eyebrow">Navigation</p>
+            <ul class="footer-links">
+              <li><a href="services.html">Services</a></li>
+              <li><a href="succursales.html">Nos succursales</a></li>
+              <li><a href="contact.html">Nous joindre</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="eyebrow">Succursales</p>
+            <div class="footer-branches">
+              <a href="succursales.html">La Prairie</a>
+              <a href="succursales.html">Laval (Sainte-Rose)</a>
+              <a href="succursales.html">Mont-Saint-Hilaire</a>
+              <a href="succursales.html">St-Jérôme</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Les Barbares</span>
+          <span>info@lesbarbares.ca · 450-937-7909</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="booking-overlay" id="booking-overlay" onclick="closeBooking()"></div>
+  <aside class="booking-panel" id="booking-panel" aria-modal="true" role="dialog" aria-label="Réserver une visite">
+    <div class="booking-header">
+      <h2 class="booking-title">Réserver une visite</h2>
+      <button class="booking-close" type="button" onclick="closeBooking()" aria-label="Fermer">✕</button>
+    </div>
+    <div class="booking-body">
+      <p>Sélectionnez une succursale. Le clic ouvre directement le bon lien de réservation.</p>
+      <div class="booking-locations">
+        <button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://linktr.ee/Barbares">
+          <span class="name">La Prairie</span>
+          <span class="address">502 Rue Saint-Georges · La Prairie</span>
+        </button>
+        <button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://book.squareup.com/appointments/hnw8ubz1rvs21f/location/LJN0TJ5JBTWC9/services">
+          <span class="name">Laval (Sainte-Rose)</span>
+          <span class="address">135 Boul. Curé-Labelle · Laval</span>
+        </button>
+        <button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://book.squareup.com/appointments/hnw8ubz1rvs21f/location/LEB6K5XP36884/services">
+          <span class="name">Mont-Saint-Hilaire</span>
+          <span class="address">290-B Boul. Sir-Wilfrid-Laurier</span>
+        </button>
+        <button class="booking-location" type="button" onclick="selectLocation(this)" data-url="https://stjerome.lesbarbares.ca/index.php/Fr/Accueil/Accueil/">
+          <span class="name">St-Jérôme</span>
+          <span class="address">676 Boul. Labelle · Saint-Jérôme</span>
+        </button>
+      </div>
+      <p class="booking-caption">Vous serez redirigé vers la plateforme de réservation de la succursale choisie.</p>
+    </div>
+  </aside>
+
+  <script src="site.js"></script>
 </body>
 </html>
