@@ -457,6 +457,24 @@ button {
   gap: 1rem;
 }
 
+.location-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.location-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.location-card-body {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
 .service-card .index {
   color: rgba(255, 255, 255, 0.35);
   font-size: 0.82rem;
