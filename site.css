@@ -32,9 +32,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background:
-    radial-gradient(circle at top left, rgba(83, 83, 102, 0.24), transparent 28%),
-    linear-gradient(180deg, #1c1c1c 0%, #1c1c1c 100%);
+  background: var(--bg-soft);
   color: var(--text);
   overflow-x: hidden;
 }
@@ -68,11 +66,33 @@ button {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.48);
+  color: var(--section-eyebrow, rgba(255, 255, 255, 0.48));
 }
 
 .section {
   padding: 5.5rem 0;
+}
+
+main > section:not(.hero) {
+  --section-fg: var(--bg);
+  --section-muted: rgba(28, 28, 28, 0.72);
+  --section-eyebrow: rgba(28, 28, 28, 0.48);
+  --section-line: rgba(28, 28, 28, 0.12);
+  --section-link: rgba(28, 28, 28, 0.8);
+  --section-breadcrumb: rgba(28, 28, 28, 0.56);
+  background: var(--bg-soft);
+  color: var(--section-fg);
+}
+
+main > section:not(.hero):nth-of-type(even) {
+  --section-fg: var(--text);
+  --section-muted: rgba(234, 230, 224, 0.72);
+  --section-eyebrow: rgba(255, 255, 255, 0.48);
+  --section-line: rgba(234, 230, 224, 0.14);
+  --section-link: rgba(255, 255, 255, 0.8);
+  --section-breadcrumb: rgba(255, 255, 255, 0.56);
+  background: var(--bg-elevated);
+  color: var(--section-fg);
 }
 
 .section-head {
@@ -101,7 +121,7 @@ button {
 .location-card p,
 .meta-card p,
 .list-card li {
-  color: var(--muted);
+  color: var(--section-muted, var(--muted));
   line-height: 1.75;
 }
 
@@ -403,9 +423,19 @@ button {
 .service-copy .lead {
   max-width: 54rem;
   margin: 0;
-  color: var(--muted);
+  color: var(--section-muted, var(--muted));
   font-size: 1.05rem;
   line-height: 1.8;
+}
+
+.page-hero .button {
+  background: var(--accent);
+  color: var(--highlight);
+}
+
+.page-hero .ghost-button {
+  border-color: var(--section-line, var(--line));
+  color: var(--section-fg, var(--text));
 }
 
 .page-actions {
@@ -426,6 +456,22 @@ button {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(83, 83, 102, 0.14));
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+}
+
+.meta-card,
+.cta-card,
+.detail-card,
+.service-card,
+.location-card,
+.contact-card,
+.contact-stack {
+  --section-fg: var(--text);
+  --section-muted: var(--muted);
+  --section-eyebrow: rgba(255, 255, 255, 0.48);
+  --section-line: var(--line);
+  --section-link: rgba(255, 255, 255, 0.8);
+  --section-breadcrumb: rgba(255, 255, 255, 0.56);
+  color: var(--section-fg);
 }
 
 .image-frame img {
@@ -674,8 +720,8 @@ button {
 .bullet-list li,
 .contact-points li {
   padding: 0.8rem 0;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
+  border-bottom: 1px solid var(--section-line, var(--line));
+  color: var(--section-muted, var(--muted));
 }
 
 .bullet-list li:last-child,
@@ -691,7 +737,7 @@ button {
 
 .branch-links a,
 .footer-branches a {
-  color: rgba(255, 255, 255, 0.76);
+  color: var(--section-link, rgba(255, 255, 255, 0.76));
 }
 
 .cta-card {
@@ -701,7 +747,15 @@ button {
 }
 
 .footer {
+  --section-fg: var(--text);
+  --section-muted: rgba(234, 230, 224, 0.72);
+  --section-eyebrow: rgba(255, 255, 255, 0.48);
+  --section-line: rgba(234, 230, 224, 0.14);
+  --section-link: rgba(255, 255, 255, 0.8);
+  --section-breadcrumb: rgba(255, 255, 255, 0.56);
   padding: 3.5rem 0 2rem;
+  background: var(--bg-elevated);
+  color: var(--section-fg);
   border-top: 1px solid var(--line);
 }
 
@@ -719,13 +773,13 @@ button {
 .footer-brand p,
 .footer-bottom,
 .footer-branches {
-  color: var(--muted);
+  color: var(--section-muted, var(--muted));
 }
 
 .footer-bottom {
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--section-line, var(--line));
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -737,7 +791,7 @@ button {
   flex-wrap: wrap;
   gap: 0.65rem;
   margin-bottom: 1.5rem;
-  color: rgba(255, 255, 255, 0.56);
+  color: var(--section-breadcrumb, rgba(255, 255, 255, 0.56));
   font-size: 0.86rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
