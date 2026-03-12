@@ -479,6 +479,17 @@ button {
   padding: 1.5rem;
 }
 
+.contact-grid {
+  gap: 1.6rem;
+}
+
+.contact-card {
+  display: grid;
+  align-content: start;
+  gap: 1.15rem;
+  padding: clamp(1.85rem, 3vw, 2.35rem);
+}
+
 .service-card {
   display: grid;
   gap: 1rem;
@@ -600,6 +611,8 @@ button {
 .contact-card h3 {
   margin: 0;
   font-size: clamp(1.35rem, 3vw, 2rem);
+  max-width: 15ch;
+  line-height: 1.08;
 }
 
 .service-card h3 {
@@ -612,6 +625,17 @@ button {
 .location-card p,
 .contact-card p {
   margin: 0;
+}
+
+.contact-card p {
+  max-width: 30ch;
+  line-height: 1.82;
+}
+
+.contact-card .button,
+.contact-card .ghost-button,
+.contact-card .text-link {
+  margin-top: 0.55rem;
 }
 
 .pill-row {
