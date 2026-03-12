@@ -95,6 +95,17 @@ main > section:not(.hero):nth-of-type(even) {
   color: var(--section-fg);
 }
 
+main > section:last-of-type:not(.hero) {
+  --section-fg: var(--text);
+  --section-muted: rgba(234, 230, 224, 0.72);
+  --section-eyebrow: rgba(255, 255, 255, 0.48);
+  --section-line: rgba(234, 230, 224, 0.14);
+  --section-link: rgba(255, 255, 255, 0.8);
+  --section-breadcrumb: rgba(255, 255, 255, 0.56);
+  background: #1c1c1c;
+  color: var(--section-fg);
+}
+
 .section-head {
   display: grid;
   gap: 1rem;
