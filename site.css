@@ -75,11 +75,11 @@ button {
 
 main > section:not(.hero) {
   --section-fg: var(--bg);
-  --section-muted: rgba(28, 28, 28, 0.72);
-  --section-eyebrow: rgba(28, 28, 28, 0.48);
-  --section-line: rgba(28, 28, 28, 0.12);
-  --section-link: rgba(28, 28, 28, 0.8);
-  --section-breadcrumb: rgba(28, 28, 28, 0.56);
+  --section-muted: rgba(28, 28, 28, 0.88);
+  --section-eyebrow: rgba(28, 28, 28, 0.6);
+  --section-line: rgba(28, 28, 28, 0.18);
+  --section-link: rgba(28, 28, 28, 0.9);
+  --section-breadcrumb: rgba(28, 28, 28, 0.7);
   background: var(--bg-soft);
   color: var(--section-fg);
 }
@@ -702,10 +702,10 @@ main > section:last-of-type:not(.hero) {
 }
 
 .pill {
-  border: 1px solid var(--line);
+  border: 1px solid var(--section-line, var(--line));
   border-radius: 999px;
   padding: 0.55rem 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--section-muted, rgba(255, 255, 255, 0.7));
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -726,6 +726,56 @@ main > section:last-of-type:not(.hero) {
 .detail-card ul,
 .contact-stack ul {
   margin-top: 1rem;
+}
+
+.service-details {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+@media (min-width: 840px) {
+  .service-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.service-detail-copy,
+.service-detail {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.service-detail h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.6vw, 2.1rem);
+  line-height: 1.15;
+}
+
+.service-detail .bullet-list {
+  margin-top: 0.25rem;
+}
+
+main > section.section--dark:not(.hero) {
+  --section-fg: var(--text);
+  --section-muted: rgba(234, 230, 224, 0.72);
+  --section-eyebrow: rgba(255, 255, 255, 0.48);
+  --section-line: rgba(234, 230, 224, 0.14);
+  --section-link: rgba(255, 255, 255, 0.8);
+  --section-breadcrumb: rgba(255, 255, 255, 0.56);
+  background: #1c1c1c;
+  color: var(--section-fg);
+}
+
+main > section.section--mauve:not(.hero) {
+  --section-fg: var(--text);
+  --section-muted: rgba(234, 230, 224, 0.72);
+  --section-eyebrow: rgba(255, 255, 255, 0.48);
+  --section-line: rgba(234, 230, 224, 0.14);
+  --section-link: rgba(255, 255, 255, 0.8);
+  --section-breadcrumb: rgba(255, 255, 255, 0.56);
+  background: var(--bg-elevated);
+  color: var(--section-fg);
 }
 
 .bullet-list li,
